@@ -1,5 +1,5 @@
 //ObjectPropertiesCode
-
+"use strict";
 function silverware(type,material,weight)
 {
 	this.type = type
@@ -14,10 +14,10 @@ var result = [];
 
 var silverwareArray = [mattSilverware, arielSilverware]
 
-for(i in silverwareArray)
+for(var i = 0 in silverwareArray)
 {
 	var currentObject = silverwareArray[i]
-	for(property in currentObject) // property === current object's properties and currentObject === the object itself.
+	for(var property = 0 in currentObject) // property === current object's properties and currentObject === the object itself.
 	{
 		result.push(currentObject[property]);		
 	}

@@ -1,5 +1,5 @@
 // Object Prototype Code
-
+"use strict";
 function LeatherClothing(material)
 {
 	this.material = "Leather"

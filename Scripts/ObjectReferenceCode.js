@@ -1,4 +1,5 @@
 //ObjectReferenceCode
+"use strict";
 function creature(name, size,color,avgLife) {
 	this.name = name;
 	this.size = size;

@@ -1,5 +1,5 @@
 //ObjectMethodsCode
-
+"use strict";
 var building = {
 	material:"brick",
 	height: 15,

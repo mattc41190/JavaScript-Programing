@@ -1,4 +1,5 @@
 //ObjectCreationCode
+"use strict";
 var person = 
 {
 	firstName:"John", 
