@@ -30,34 +30,41 @@
 		<h2 id="httpResources">HTTP Resources</h2>
 		<p>HTTP stands for Hyper Text Transfer Protocol. It is the means by which resources on the internet are found and used. This unit covers the resources on the internet and how they are accessed via the HTTP protocol.</p>
 		<ol>
-			<li><a href="#httpResources">HTTP Resources</a></li>
-			<li> <a href="#httpMessages">HTTP Messages</a></li>
-			<li><a href="#httpConnections">HTTP Connection</a></li>
-			<li> <a href="#httpArchitecture">HTTP Architecture</a></li>
-			<li> <a href="#httpSecurity">HTTP Security</a></li>
-		</ol>
+			<li><a href="#URLSection">Uniform Resource Locators</a></li>
+			<li><a href="#PQFSection">Ports, Queries, & Fragments</a></li>
+			<li><a href="#URLEncodingSection">URL Encoding</a></li>
+		</ol> 
+		</div>
+		<div class="well">
+		<h3 id="URLSection">Uniform Resource Locators</h3>
+		<p>HTTP Requests are made via a URL or a Uniform Resource Locator. A URL is composed 3 basic parts. The first part is the URL scheme, when a website is being accessed it's scheme is <code>HTTP://</code> this specifices what type of protocol is needed to return to the desired resource. <i>Note: There are other protocols available in the browser such as the FTP or File Transfer Protocol or the MailTo E-Mail Protocol. For now we will only be discussing HTTP/HTTPS</i></p>
+		<p>The second part of a URL is the host. The host is the name of the location the browser will use to look for a specific resource. For example,<code>www.ExampleWebsite.com</code>. This part of the URL points to a literal machine somehwere that is hosting the desired resource. The host name or domain name is an alias for the IP address, so the first thing a request does is a look up of the host name and translates that into an IP address of a specific machine somewhere.</p>
+		<p>The last part of the URL is known as the path. The path looks very similiar to file path on your local machine and very often the browser is pointing to a real file somewhere. For example:<br> <code>www.ExampleWebsite.com/HtmlExamples/HelloWorld.html</code>.<br>
+		In other cases the URL is requesting a resource to be rendered against a template and the file itself doesn't exist but all the pieces required to make the file do. This approach leads to more uniform URLs that will not deprecate as easily overtime. </p>
 
 		<br>
-		<code>
-			<var>function</var> car(make, model, year, transmission) {<br>
-			    this.make = make;<br>
-			    this.model = model;<br>
-			    this.year = year;<br>
-			    this.transmission = transmission;<br>
-			    <br>
-
-			    this.modelYear = <var>function()</var><br>
-			    {<br>
-			    	console.log(this.model +", "+this.year);<br>
-			    }<br>
-			}<br>
-			<br>
-			var firstCar = new car("Toyota", "Truck X50", 1989, "Auto");<br>
-			var currentCar = new car("Ford", "Focus", 2008, "Auto");<br>
-
-		</code>
-		<br> 
+		<h4>Example:</h4>
+		<code>http://www.ExampleWebsite.com/HtmlExamples/HelloWorld.html</code>
 		<br>
+		<p>The URL above is making an http request to a host at www.ExampleWebsite.com. The specfic resource desired is placed in the path and points to an actual HTML file called HelloWorld.html</p>
+		</div> <!-- EndOf_URLSection -->
+		<div class="well">
+		<h3 id="PQFSection">Ports, Queries, and Fragments</h3>
+		<p>While the URL is composed of three major parts, there are additional elements a URL can contain. Three additional URL components are Ports, Queries, and Fragments.</p>
+		<p>Ports are addresses where the host will listen for HTTP requests. Ports are a default part of the URL and if none is specified as is usually the case the port defaults to 80. The port is located after the host name, and before the path. <code>http://www.ExampleSite.com:80/HelloWorld/Hello.html</code>.</p>
+		<p>Though the default port of 80 does not need to be specified if it is modified to be something besides 80 it will be a required portion of the URL from then on.</p>
+		<p>Queries or query strings are located at the end of a path and typcally help point to a more specific resource on a page. Queries are largely self explanatory. <code>http://www.ExampleSearch.com/search?q=book</code>. The preceeding URL is the result of looking for <kbd>book</kbd> in the ExampleSearch websites search action. The query string is 100% determined by the application, but conventionally the query string appears in a name value pair system. In the section above the search action takes a query called "q" and in the example above q is equal to "book" so the search action runs against book.</p>
+		<p>Fragments are located at the very end of any URL and they are not processed on the server side like any other portions of the URL. The fragment is marked by a <code>#</code> followed by the desired page fragment. When a fragment is processed by the client the page jumps to or loads at the specific fragment of the page specified. For instance: <code>https://en.wikipedia.org/wiki/Fragment_identifier#Proposals</code> will bring the user to a Wikipedia page, but furthermore it will bring them to a specifc portion/fragment of the page identified by the world "Proposals"</p>
+		<br>
+		<p>At this point we have covered all major areas of the URL. From the all important scheme, to the helpful addition fragment. Being given the following URL <code>http://www.HostSite.com:81/path?q=name#frag</code> you should be able to correctly identify all of its constiuent parts and explain what they do.</p>
+		</div>
+		<div class="well">
+		<h3 id="URLEncodingSection">URL Encoding</h3>
+		<p>The characters used to create URLs have been carefully selected and the rules surrounding what types of characters are allowed in a URL are important to know. This section covers how URLs are encoded and the rules regarding what characters may be used.</p>
+		<p>To give an example of a character that is not considered a "safe" URL character consider the space character. It is a highly utilized character, and makes sentences look much better. For instance,iamasupercoolwebsitename.com/thisisasuperlongconfusingpath is much easier to read as: i am a super cool website name.com/this is a super long confusing path. However, imagine the confusion a user might run into if he or she had accidentally placed two space in the URL or had mistakenly thought there were two space in the URL he or she read. For this reason, there are standard regarding URL characters.</p>
+		<p>For quick reference consider the character A-Z, a-z, and 0-9 to be safe. Special character that are also conisdered safe are: $-_.+!*'(). Everything else is either resevered for URL structure reasons (the use of <kbd>#</kbd> is reserved to denote a page fragment for instance) or requires special encoding (the caret symbol for instace <kbd>^</kbd>)</p>
+		<p>If at any point encoding is required, then it must be encoded via percent encoding/ URL encoding. URL/Precent encoding is the process of translating certain special characters to their reserved percent sign preceeding translation. For instance the URL <code>http://www.Test Website.com</code> needs to be encoded as <code>http://www.Test%20Website.com</code> becuase the URL encoded version of the <kbd>Space</kbd> is "%20".</p>
+		<p>For full encoding direction please visit <a href="http://www.w3schools.com/tags/ref_urlencode.asp">W3 Schools</a>.</p>
 		</div>
 	</div> <!-- EndOf_HTTPResources -->
 	<div id="HTTPMessages">
