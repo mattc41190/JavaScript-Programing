@@ -70,30 +70,78 @@
 	<div id="HTTPMessages">
 		<div class="well">
 		<h2 id="httpMessages">HTTP Messages</h2>
-		<p>Test</p>
-
+		<p>HTTP relies on the sending of messages from the server to the client and from the client to the server. This units covers what types of messages exist, what thet are used for, and the composition of a message being sent and the composition of the response.</p>
+		<ol>
+			<li><a href="#MethodsSection">HTTP Methods</a></li>
+			<li><a href="#RequestSection">Request Messages</a></li>
+			<li><a href="#ResponseSection">Response Messages</a></li>
+		</ol> 
 		<br>
-
+		</div>
+		<div class="well">
+		<h3 id="MethodsSection">HTTP Methods</h3>
+		<p>There are several HTTP methods and every HTTP request made to a server must contain an acceptable method. In this section we will only cover two methods in depth,the GET method and the POST method. Other methods that you might see are <code>DELETE</code> which removes a resource, <code>PUT</code> which stores a resource, and <code>HEAD</code> which retrieve the headers for a resource. Don't be scared if this doesn't make sense right away. The major concepts will be explained in depth and from a beginner's point of view</p>
+		<ol>
+			<li><a href="#GetSubSection">GET</a></li>
+			<li><a href="#PostSubSection">POST</a></li>
+		</ol> 
 		<br>
-		<code>
-			<var>function</var> car(make, model, year, transmission) {<br>
-			    this.make = make;<br>
-			    this.model = model;<br>
-			    this.year = year;<br>
-			    this.transmission = transmission;<br>
-			    <br>
-
-			    this.modelYear = <var>function()</var><br>
-			    {<br>
-			    	console.log(this.model +", "+this.year);<br>
-			    }<br>
-			}<br>
-			<br>
-			var firstCar = new car("Toyota", "Truck X50", 1989, "Auto");<br>
-			var currentCar = new car("Ford", "Focus", 2008, "Auto");<br>
-
-		</code>
-		<br> 
+		</div>
+		<div class="well">
+		<h4 id="GetSubSection">GET</h4>
+		<p>The <code>GET</code> HTTP method does exactly what it sounds like. It gets a resource from the server. Without knowing it anytime you request a resource (remember a resource could be anything from a picture, to a video, to a web page) you are sending an HTTP <code>GET</code> method along with your URL. The <code>GET</code> method is considered a "safe" method because it does not affect data or change anything on the side of the server which serves not only your user but all other user asking for resources from that host.</p>
+		<br>
+		</div>
+		<div class="well">
+		<h4 id="PostSubSection">POST</h4>
+		<p>The <code>POST</code> HTTP method updates data on a server from a client. Without knowing it anytime you submit a data to a server you are sending an HTTP <code>POST</code> method along with your URL. For example, if you register for a site or add an item to your basket in amazon you are issuing a <code>POST</code> request to a server and data has now changed on the server side. Typically posts are submitted via the HTML form element <br><code>&ltform method="post"&gt</code>.
+		<br>
+		 The <code>POST</code> method is considered to be unsafe due to the fact that it is modifying data on the server and has the potential to create harmful or inaccurate data. <code>POST</code> methods are used for operations like processing credit card transactions and registering information on a website. Due to the unsafe nature of the post method several browsers warn the user that doing certain actions is considered unsafe.</p>
+		 <p>Quite often in order to prevent users from completeing potentially harmful actions they will instead be redirected if the page is the result of a <code>POST</code> to a page whose HTTP method is a <code>GET</code>. This method is called PostRedirectGet or PrG.</p>
+		<br>
+		</div>
+		<div class="well">
+		<h4 id="RequestSection">Request Messages</h4>
+		<p>An HTTP request message includes the HTTP method (a GET or POST), a URL, and a version (HTTP v1.1 has been in use since 1998) <i>[method][URL][version]</i>. This portion of the message is called the start line and is always in ascii text.</p>
+		<p>The second portion of a request message is called the headers and finally the body of the message. The headers section contains information required by the server (Ex: The URL Host) or useful for content negotiation (Ex: Langauge preference). In the table below is a list of common headers and their uses.</p>
+		<table class="table table-hover">
+			<tr class="info">
+				<th>Header</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>Host</td>
+				<td>Host of the site from which the request is being made.</td>
+			</tr>
+			<tr>
+				<td>Referer</td>
+				<td>Host of the site from which the request is being made.</td>
+			</tr>
+			<tr>
+				<td>User-Agent</td>
+				<td>Host of the site from which the request is being made.</td>
+			</tr>
+			<tr>
+				<td>Accept</td>
+				<td>Host of the site from which the request is being made.</td>
+			</tr>
+			<tr>
+				<td>Accept-Language</td>
+				<td>Host of the site from which the request is being made.</td>
+			</tr>
+			<tr>
+				<td>Cookie</td>
+				<td>Host of the site from which the request is being made.</td>
+			</tr>
+			<tr>
+				<td>If-Modified-Since</td>
+				<td>Host of the site from which the request is being made.</td>
+			</tr>
+			<tr>
+				<td>Date</td>
+				<td>Host of the site from which the request is being made.</td>
+			</tr>
+		</table>
 		<br>
 		</div>
 	</div> <!-- EndOf_HTTPMessages -->
