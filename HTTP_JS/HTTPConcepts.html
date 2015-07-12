@@ -101,7 +101,7 @@
 		<br>
 		</div>
 		<div class="well">
-		<h4 id="RequestSection">Request Messages</h4>
+		<h3 id="RequestSection">Request Messages</h3>
 		<p>An HTTP request message includes the HTTP method (a GET or POST), a URL, and a version (HTTP v1.1 has been in use since 1998) <i>[method][URL][version]</i>. This portion of the message is called the start line and is always in ascii text.</p>
 		<p>The second portion of a request message is called the headers and finally the body of the message. The headers section contains information required by the server (Ex: The URL Host) or useful for content negotiation (Ex: Langauge preference). In the table below is a list of common headers and their uses.</p>
 		<table class="table table-hover">
@@ -115,34 +115,47 @@
 			</tr>
 			<tr>
 				<td>Referer</td>
-				<td>Host of the site from which the request is being made.</td>
+				<td>The URL of the referring page.</td>
 			</tr>
 			<tr>
 				<td>User-Agent</td>
-				<td>Host of the site from which the request is being made.</td>
+				<td>Browser information.</td>
 			</tr>
 			<tr>
 				<td>Accept</td>
-				<td>Host of the site from which the request is being made.</td>
+				<td>Preferred media types aka MIME types (Ex: text/html or jpeg).</td>
 			</tr>
 			<tr>
 				<td>Accept-Language</td>
-				<td>Host of the site from which the request is being made.</td>
+				<td>Preferred.</td>
 			</tr>
 			<tr>
 				<td>Cookie</td>
-				<td>Host of the site from which the request is being made.</td>
+				<td>Cookie information.</td>
 			</tr>
 			<tr>
 				<td>If-Modified-Since</td>
-				<td>Host of the site from which the request is being made.</td>
+				<td>Date of last retrieval.</td>
 			</tr>
 			<tr>
 				<td>Date</td>
-				<td>Host of the site from which the request is being made.</td>
+				<td>Creation timestamp for the message.</td>
 			</tr>
 		</table>
 		<br>
+		A full HTTP request message might look like the following:
+		<br>
+		<code>
+			GET / www.example.com HTTP/1.1<br>
+			Host: ExampleServer.com<br>
+			Connection: keep-alive<br>
+			User-Agent: Mozilla/5.0<br>
+			Accept: text/html<br>
+			Referer: http://www.goodle.com<br>
+		</code>
+		</div>
+		<h3 id="ResponseSection">Response Messages</h3>
+		<p>An HTTMP response message will 
 		</div>
 	</div> <!-- EndOf_HTTPMessages -->
 	<div id="HTTPConnections">
