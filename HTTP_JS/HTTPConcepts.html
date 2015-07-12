@@ -154,8 +154,60 @@
 			Referer: http://www.goodle.com<br>
 		</code>
 		</div>
-		<h3 id="ResponseSection">Response Messages</h3>
-		<p>An HTTMP response message will 
+		<div class="well">
+			<h3 id="ResponseSection">Response Messages</h3>
+			<p>An HTTP response message will contain a Version, a Status Code, and a Reason. The version will be the same HTTP version number that the request has it just happens to come first in the response. The status code which is layed out below will be a number indicating the type of response the HTTP resource is giving you. The reason will be a short explnation of the status code.</p>
+			<p>The HTTP response, like the request also has the ability to send back Headers and a Body. The headers are information on the response it may have information on the server that is sending the response, the date the response was created. In addition there are extender headers demarcated by the letter X- preceeding the header. On example of an extended header is the X-Powered-By which is a microsoft header that will inform the user of the type of microsoft tech being used to return the result. The body is the returned resource itself.</p>
+			<p>A full HTTP response might look like the following:</p>
+			<br>
+			<code>
+				HTTP/1.1 200 OK<br>
+				Content-Type: text/xml; charset=utf-8<br>
+				Content-Length: 1771<br>
+
+				<br>&lt?xml version="1.0" encoding="utf-8"?&gt<br>
+				&ltsoap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt<br>
+				  &ltsoap:Body&gt<br>
+				  &ltEnlightenResponse xmlns="http://clearforest.com/"&gt<br>
+				  &ltEnlightenResu&ltgtstring&lt/EnlightenResu&ltgt<br>
+				  &lt/EnlightenResponse&gt<br>
+				  &lt/soap:Body&gt<br>
+				&lt/soap:Envelope&gt<br>
+			</code>
+			<br>
+			<p>The response specifies that it uses the HTTP 1.1 protocol. It is returning a status of 200 and an explanation of that that stauts which is "OK". The content-type and content-length are the only headers included in this response the content type tell the client that it is returning XML with the UTF-8 char set. The body as specified in the MIME/content type is an XML document.</p>
+			<table class="table table-hover">
+				<tr class="info">
+					<th>Status Code Range</th>
+					<th>Explanation</th>
+					<th>Popular Example</th>
+				</tr>
+				<tr>
+					<td>100-199</td>
+					<td>Informational</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>200-299</td>
+					<td>Successful</td>
+					<td>200, the resource is returning as expected</td>
+				</tr>
+				<tr>
+					<td>300-399</td>
+					<td>Redirection</td>
+					<td>301, tells the browser theis resource has been moved elsewhere permanently</td>
+				</tr>
+				<tr>
+					<td>400-499</td>
+					<td>Client Error</td>
+					<td>404, the resource was not found where the client is looking</td>
+				</tr>
+				<tr>
+					<td>500-599</td>
+					<td>Server Error</td>
+					<td>500, internal server error means logic on the server side failed to return the appropriate resource.</td>
+				</tr>
+			</table>
 		</div>
 	</div> <!-- EndOf_HTTPMessages -->
 	<div id="HTTPConnections">
