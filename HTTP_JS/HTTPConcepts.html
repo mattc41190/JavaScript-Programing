@@ -213,31 +213,31 @@
 	<div id="HTTPConnections">
 		<div class="well">
 		<h2 id="httpConnections">HTTP Connections</h2>
-		<p>Test</p>
-
-		<br>
-
-		<br>
-		<code>
-			<var>function</var> car(make, model, year, transmission) {<br>
-			    this.make = make;<br>
-			    this.model = model;<br>
-			    this.year = year;<br>
-			    this.transmission = transmission;<br>
-			    <br>
-
-			    this.modelYear = <var>function()</var><br>
-			    {<br>
-			    	console.log(this.model +", "+this.year);<br>
-			    }<br>
-			}<br>
-			<br>
-			var firstCar = new car("Toyota", "Truck X50", 1989, "Auto");<br>
-			var currentCar = new car("Ford", "Focus", 2008, "Auto");<br>
-
-		</code>
-		<br> 
-		<br>
+		<p>While HTTP is the means by which an application commuincates with another application or different side of the same application (HTTP is often refered to as an application layer protocol). There are others "layers" that help transport HTTP messages from clients to servers. This section goes over those layers, what they are responsible for, and when they are available.</p>
+		<ol>
+			<li><a href="#TCPSection">Introduction to TCP</a></li>
+			<li><a href="TCPHandshake">TCP Handshake</a></li>
+			<li><a href="TCPSdfgdection">XX</a></li>
+			<li><a href="TCPSdfgdfection">XX</a></li>
+		</ol>
+		</div>
+		<div class="well">
+		<h3 id="TCPSection">Transmission Control Protocol</h3>
+		<p>The Transmission Control Protocol or TCP is a reliable protocol that is a layer below the HTTP protocol and its responsiblity is to take information from an HTTP request and send it to the desired server. When a client side browser wants to meake request it extracts the host and determines the IP address for that host. The browser thens opens a TCP socket and begins writing data into that socket. The browsers only responsiblity is to write the correct data into the TCP socket. Once the information is written TCP takes the message and ensure that the message makes it way to the server without being lost, corrupted, or duplicated. TCP automatically resends any data that might get lost in transit and for this reason it is a relaible protocol. In addition TCP provides flow control so that devices don't get flooded with too much data all at once.</p>
+		<p>While HTTP and TCP are the primary focuses of this section it will be benefical to name the other players in the game. Once the message are stored by TCP they are handed to Internet Protocol or IP which directs the messages over all the physical devices via their IP address. The last layers is the truly physicaly layer known as the data link layer whch may be cable, ethernet or wireless.</p>
+		</div>
+		<div class="well">
+		<h3 id="TCPHandshake">TCP Handshake</h3>
+		<p>The TCP handshae is a process that the browser and intended server do before any HTTP messages are ever sent. The handshake is a collection of three messages that opens a connection to a server. The steps below occur any time a resource is desired froma website. As soon as you hit enter to go to www.google.com before any resources are requested or retrieved the handshake occurs.</p>
+		<p>
+			Host A (client/browser) sends a <kbd>TCP SYNchronize</kbd> (known as a SYN) packet to Host B<br>
+			Host B receives A's <kbd>SYN</kbd><br>
+			Host B sends a <kbd>SYNchronize-ACKnowledgement</kbd> (known as a SYN-ACK)<br>
+			Host A receives B's <kbd>SYN-ACK</kbd><br>
+			Host A sends <kbd>ACKnowledge</kbd><br>
+			Host B receives <kbd>ACK</kbd>. <br>
+			TCP socket connection is ESTABLISHED.<br>
+			</p>
 		</div>
 	</div> <!-- EndOf_HTTPConnections -->
 	<div id="HTTPArchitecture">
