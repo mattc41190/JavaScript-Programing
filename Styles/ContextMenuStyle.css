@@ -1,0 +1,35 @@
+/*Context Menu*/
+
+#contextMenu
+{
+	height: 50px;
+	width:50px;
+	border-radius: 90px;
+	background: red;
+	opacity: .5;
+	position: fixed;	
+	margin-top: 40%;
+	margin-left: 95%;
+	text-align: center; 
+}
+
+#caret
+{
+	margin-top: 10%;
+	font-size: 30px;
+}
+
+@media screen and (max-width: 900px) {
+    #contextMenu {
+	height: 30px;
+	width:100%;
+	border-radius: 0px;
+	margin-left: 0%;
+	margin-top: 0%;
+    }
+
+    #caret{
+		margin-top: .5%;
+		font-size: 30px;
+	}
+}
