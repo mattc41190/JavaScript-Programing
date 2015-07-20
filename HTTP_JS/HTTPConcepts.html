@@ -248,37 +248,72 @@
 	<div id="HTTPArchitecture">
 		<div class="well">
 		<h2 id="httpArchitecture">HTTP Architecture</h2>
-		<p></p>
+		<p>HTTP as a whole is primarily about sending a message from one machine to another machine and then interpretting the response. There are a number of ways in which someone might leverage the capablities of HTTP messages to serve their website.In this section we will be primarily concerned with proxies and caching and how they relate to the way an application preforms.</p>
+		<ol>
+			<li><a href="#Proxies">Proxy Server</a></li>
+			<li><a href="#Caching">Caching</a></li>
+		</ol>
+		</div>
+		<div class="well">
+			<h3 id="Proxies">Proxy Server</h3>
+			<p>A Proxy server is a server that intercepts HTTP messages and either redirects them or modifies them if needed. There are two different main types of proxies; the forward proxy and the reverse proxy. A forward proxy will intercept messages close to the client and redcirect them or hold on to them. One commonly used feature for the forward proxy is the intercepting of messages heading to websites that an employer doesn't want his employees visiting on the company network. A forward proxy can intercept a message for facebook and redriect it to fail and in so doing block employees from that site. In addition, a forward proxy can modify and remove potentially dangerous data like the referer URL. A reverse proxy on the other hand will live closer to the server and tends to be there to ensure performance from the server side. A server side proxy can act as a load balancer if for instance there were two main website servers and one had a great deal of pressure on it a load balancer could begin to redirect HTTP messages to the server with more available memory and resources. Both sorts of proxies employ a technique known as caching to improve performance.</p>
+		</div>
+		<div class="well">
+			<h3 id="Caching">Caching</h3>
+			<p>Caching is the method of holding on to a resource for use later. The client, server, and proxies can take advantage of this technique. Commonly there resources that once downloaded are not modified for sometime, but are large, expensive, and loaded several times a day. An example of this is the large "Google" picture on Google's home page. That page is loaded several times a day and it rarely changes. Once a client retrieves that resource once it is safe to store/ cache it for later use. Later that day if the page is reloaded instead of requesting the resource again from the server the browser can scan the cache for resources from that URL and place them in the page. This method drastically improves performance.</p>
 		</div>
 	</div> <!-- EndOf_HTTPArchitecture -->
 	<div id="HTTPSecurity">
 		<div class="well">
 		<h2 id="httpSecurity">HTTP Security</h2>
-		<p>Test</p>
-
-		<br>
-
+		<p>The beauty of HTTP is that it is a stateless protocol. When the term stateless is used it means that all of the information needed to complete a full HTTP transcation occurs in every request and response. For this reason the fully verbose version of the messages are sent accross the wire for every request (if resource is cached it is not sent unless told to). This stateless measure while very good for serving static information is at odds with our personalized and highly stateful applications. This issue is fixed with HTTP security methods. This section goes over some of the techniques used to provice application state via a stateless protocol.</p>
+		<ol>
+			<li><a href="NonCookieMethods">Non-Cookie Methods</a></li>
+			<li><a href="CookieMethods">Cookies</a></li>
+			<li><a href="Authentication">Authentication</a></li>
+		</ol>
+		</div>
+		<div class="well">
+		<h3 id="NonCookieMethods">Non-Cookie Methods</h3>
+		<p>While a great deal of this unit is dedicated to storing state within cookies there are other methods for storing the state of a resource.</p>
+		<p>One simple method is to save information about the specific resource in hidden inputs on the page itself. ASP does excatly this in its <code>__ViewState</code> method. The information dealing with a users current state is saved into a string and is sent up to the server to be retrevied in its former state the next time it is needed. A problem with this is that it can become confusing with large scale apps.</p>
+		<p>Another method of storing state is to store the state of data in a database to be retreived when that specific resource is needed again. When the data is saved to a database the next time it is needed it will be pulled as part of the HTTP request.</p>
+		<p>Outside of pure cookies there is one other highly used method of storing state. In ASP.NET applications access to the Session object is available. The session object will store information on a specific user's interaction with the site. It is based on the cookie method so if cookies are disabled the session object will not work. For more information on the session object click <a href="http://webcheatsheet.com/asp/session_object.php">here</a></p>
+		</div>
+		<div class="well">
+		<h3 id="CookieMethods">Cookie Methods</h3>
+		<p>Outside of the methods previously described there is the most common way of storing session state and that is via the HTTP cookie. The cookie is sent from the website in the form of a response message with an identifier of some sort (typically a GUID)
 		<br>
 		<code>
-			<var>function</var> car(make, model, year, transmission) {<br>
-			    this.make = make;<br>
-			    this.model = model;<br>
-			    this.year = year;<br>
-			    this.transmission = transmission;<br>
-			    <br>
-
-			    this.modelYear = <var>function()</var><br>
-			    {<br>
-			    	console.log(this.model +", "+this.year);<br>
-			    }<br>
-			}<br>
-			<br>
-			var firstCar = new car("Toyota", "Truck X50", 1989, "Auto");<br>
-			var currentCar = new car("Ford", "Focus", 2008, "Auto");<br>
-
+			HTTP/1.1 200 OK<br>
+			Set-Cookie: GUID=00a48b7f6a4946a8adf593373e53347c;<br>
+            domain=.msn.com; path=/<br>
 		</code>
-		<br> 
+		 and this is stored on the client's side and sent back and forth in the HTTP messages to indicate the user's session state. The cookie may be associated to an in app data structure or information in the DB so that the user's previous state is always able to be returned from the browser as soon as it is needed.</p>
+		 <p>Cookies have potential vulnerablities as they are visible to anyone on the network and may be intercepted and hijacked. Additionally any message with cookie information cannot be cached.</p>
+		</div>
+		<div class="well">
+		<h3 id="CookieMethods">Authentication</h3>
+		<p>There a several forms of authetication, from basic, to digest, to Windows Forms to OpenID forms. In this section we will only cover basic as the work we will be doing only covers that area.</p>
+		<p>With Basic authentication, the client will first request a resource with a normal HTTP message.
 		<br>
+			<code>GET http://localhost/html5/ HTTP/1.1<br>
+			Host: localhost</code>
+		<br>
+			Web servers will let you configure access to specific files and directories. You can allow access to all anonymous users, or restrict access so that only specific users or groups can access a file or directory. For the request above, let's imagine the server is configured to only allow certain users to view the /html5/ resource. In that case, the server will issue an authentication challenge.
+		<br>
+			<code>HTTP/1.1 401 Unauthorized<br>
+			WWW-Authenticate: Basic realm="localhost"</code>
+		<br>
+			The 401 status code tells the client the request is unauthorized. The WWW-Authenticate header tells the client to collect the user credentials and try again. The realm attribute gives the user-agent a string it can use as a description for the protected area. What happens next depends on the user-agent, but most browsers can display a UI for the user to enter credentials.
+
+			With the credentials in hand, the browser can send another request to the server. This request will include an Authorization header.
+		<br>
+			<code>
+			GET http://localhost/html5/ HTTP/1.1<br>
+			Authorization: Basic bm86aXdvdWxkbnRkb3RoYXQh</code>
+		<br>
+			The value of the authorization header is the client's username and password in a base 64 encoding. Basic authentication is insecure, because anyone with a base 64 decoder who can view the message can steal a user's password. For this reason, basic authentication is rarely used without using secure HTTP. It's up to the server to decode the authorization header and verify the username and password with the operating system, or whatever credential management system is on the server. If the credentials match, the server can make a normal reply. If the credentials don't match, the server should respond with a 401 status again.</p>
 		</div>
 	</div> <!-- EndOf_HTTPSecurity -->
 </div>
