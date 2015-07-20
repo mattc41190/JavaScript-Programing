@@ -268,9 +268,10 @@
 		<h2 id="httpSecurity">HTTP Security</h2>
 		<p>The beauty of HTTP is that it is a stateless protocol. When the term stateless is used it means that all of the information needed to complete a full HTTP transcation occurs in every request and response. For this reason the fully verbose version of the messages are sent accross the wire for every request (if resource is cached it is not sent unless told to). This stateless measure while very good for serving static information is at odds with our personalized and highly stateful applications. This issue is fixed with HTTP security methods. This section goes over some of the techniques used to provice application state via a stateless protocol.</p>
 		<ol>
-			<li><a href="NonCookieMethods">Non-Cookie Methods</a></li>
-			<li><a href="CookieMethods">Cookies</a></li>
-			<li><a href="Authentication">Authentication</a></li>
+			<li><a href="#NonCookieMethods">Non-Cookie Methods</a></li>
+			<li><a href="#CookieMethods">Cookies</a></li>
+			<li><a href="#Authentication">Authentication</a></li>
+			<li><a href="#HTTPS">HTTPS</a></li>
 		</ol>
 		</div>
 		<div class="well">
@@ -293,7 +294,7 @@
 		 <p>Cookies have potential vulnerablities as they are visible to anyone on the network and may be intercepted and hijacked. Additionally any message with cookie information cannot be cached.</p>
 		</div>
 		<div class="well">
-		<h3 id="CookieMethods">Authentication</h3>
+		<h3 id="Authentication">Authentication</h3>
 		<p>There a several forms of authetication, from basic, to digest, to Windows Forms to OpenID forms. In this section we will only cover basic as the work we will be doing only covers that area.</p>
 		<p>With Basic authentication, the client will first request a resource with a normal HTTP message.
 		<br>
@@ -314,6 +315,10 @@
 			Authorization: Basic bm86aXdvdWxkbnRkb3RoYXQh</code>
 		<br>
 			The value of the authorization header is the client's username and password in a base 64 encoding. Basic authentication is insecure, because anyone with a base 64 decoder who can view the message can steal a user's password. For this reason, basic authentication is rarely used without using secure HTTP. It's up to the server to decode the authorization header and verify the username and password with the operating system, or whatever credential management system is on the server. If the credentials match, the server can make a normal reply. If the credentials don't match, the server should respond with a 401 status again.</p>
+		</div>
+		<div class="well">
+		<h3 id="HTTPS">HTTPS</h3>
+		<p>Normally, HTTP messages are sent in plain text which helps a great deal when decoding and learning about what is being sent and how it affects the end user experience, however there are cases in which we want to keep information private. For instance, a password stored in Basic Authetication may be decoded from Base64 and seen in plain text. HTTPS encrypts the HTTP message before it hits the TCP layer and therefore before it can be intercepted. It is decoded only after it reaches a server with a certificate. By doing this it remains secure over the wire and is safe from hijackers.</p>
 		</div>
 	</div> <!-- EndOf_HTTPSecurity -->
 </div>
