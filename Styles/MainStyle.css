@@ -7,10 +7,13 @@ body
 
 .jumbotron
 {
-background: linear-gradient(to right, #ECD078 , #C8C8C8 ); /* Standard syntax */
-background: -webkit-linear-gradient(left, #ECD078 , #C8C8C8 ); /* For Safari 5.1 to 6.0 */
-background: -moz-linear-gradient(right, #ECD078, #C8C8C8 ); /* For Firefox 3.6 to 15 */	/*background: #ECD078;*/
+background-color: #ECD078;
 }
 
+
+#JavaScriptLogo
+{
+	margin-top: -3.25%;
+}
 
 
