@@ -1,7 +1,11 @@
-#Logo
+/*#Logo
 {
-	margin-top: -1%;
-}
+	display:block;
+	vertical-align:middle;
+	position: absolute;
+	float:right;
+	margin-top: -4%;
+}*/
 
 
 @media screen and (max-width: 990px) {
@@ -9,4 +13,3 @@
 {
 	visibility: hidden;
 }
-
