@@ -21,11 +21,8 @@
 			<h2>
 				Node JS
 			</h2>
-			<p>Here we will briefly be going through JavaScript Objects.</p>
-			<br>
-			<p>Objects in Javascript are functions that have the potential to handle multiple properties or methods. A simple way to think of it is thise: A JavaScript object is an unordered collection of variables called <strong>named values</strong>.</p>
-			<br>
-			<p>This page will walk you through some of the basics of working with objects in JavaScript. Please see the table of contents and choose a unit.</p>
+			<p>Here we will go over the installation and usage of Node.JS to make server side Javascript code.</p>
+			<p>This page will walk you through some of the basics of working with Node and its capabilities.</p>
 			<ol>
 			<li><a href="#NodeInstallationUnit">Node Installation</a></li>
 			</ol>
@@ -34,18 +31,16 @@
 	<div id="NodeInstallationUnit">
 		<div class="well">
 			<h2 id="nodeInstallationUnit">Node Installation</h2>
-			<p>Here we will learn the different methods for the creation of JavaScript Objects.</p>
-			<br>
-			<p>There are three ways to make objects in JavaScript</p>
+			<p>Installing Node JS is simple on both Mac and PC. It can be downloaded here. Depending on the OS you are using please see the appropriate section>
+
 			<ol>
-			<li>Using an <a href="#objectLiteralSection">object literal</a></li>
-			<li>Using the <a href="#objectNewSection">new keyword</a></li>
-			<li>Using an <a href="#objectConstructorSection">object constructor</a></li>
+			<li>Using an <a href="#nodeMacInstall">Mac Installation</a></li>
+			<li>Using the <a href="#nodeWindowsInstall">Windows Machine Installation</a></li>
 			</ol>
 
 		</div>
 			<div class="well">
-			<h3 id="objectLiteralSection">Object Literals</h3>
+			<h3 id="nodeMacInstall">Mac Installation</h3>
 			<p>An object literal is the easiest way (though no way is particularly difficult) to create a JavaScript. With an object literal you both create and assign an object at once.</p>
 			<p>The example below display how to create an object in JavaScript using the object literal approach</p>
 			<br>
@@ -74,7 +69,7 @@
 
 
 			<div class="well">
-			<h3 id="objectNewSection">Declare New Object</h3>
+			<h3 id="nodeWindowsInstall">Windows Installation</h3>
 			<p>Creating an object via this method accomplishes the same functionality as an object literal. There is no benefit to using the keyword "new" and it is not the suggested method, but is not deprecated and is completely functional</p>
 			<br>
 			<code>
@@ -98,331 +93,7 @@
 			<p id="newObjectExample"></p>
 
 		</div>
-		<div class="well">
-			<h3 id="objectConstructorSection">Object From Constructor</h3>
-			<p>Creating an object using an object constructor is the most extensible method as rather than creating a single specifc object the constructor allows you to create an easy to use template for objects. See the code below for an example of the constructor object method in action</p>
-			<br>
-			<code>
-				function car(make, model, year, transmission) {<br>
-				    this.make = make;<br>
-				    this.model = model;<br>
-				    this.year = year;<br>
-				    this.transmission = transmission;<br>
-				}<br>
-				var firstCar = new car("Toyota", "Truck X50", 1989, "Auto");<br>
-				var currentCar = new car("Ford", "Focus", 2008, "Auto");<br>
-
-			</code>
-			<br>
-			Using the object above in our javascript file we can access a particular HTML element via using the code below.
-			<br>
-			<code>
-			<br>
-				document.getElementById('constructorObjectExample').innerHTML = currentCar.make +", "+ currentCar.model;<br>
-			</code>
-			<br> 
-			<br>
-			That line is currently in use and the result of executing it results in:
-			<br>
-			<p id="constructorObjectExample"></p>
-		</div> 
-	</div> <!-- EndOf_ObjectCreationUnit -->
-	<div id="ThisKeywordUnit">
-		<div class="well">
-		<h2 id="thisKeywordUnit">The "This" Keyword</h2>
-		<p>The "this" keyword in Javascript refers to the objects that owns the code currently running.The value of this, when used in a function, is the object that "owns" the function. The value of this, when used in an object, is the object itself. The this keyword in an object constructor does not have a value. It is only a substitute for the new object.</p>
-		<br>
-		The "this" keyword is reserved for JavaScript and it cannot be reassigned to hold another value.
-		Earlier a car object was created using the constructor object creation method. Using that same code with the addition of an object method the value of the "this" keyword will be explained.
-		<br>
-
-		<br>
-		<code>
-			<var>function</var> car(make, model, year, transmission) {<br>
-			    this.make = make;<br>
-			    this.model = model;<br>
-			    this.year = year;<br>
-			    this.transmission = transmission;<br>
-			    <br>
-
-			    this.modelYear = <var>function()</var><br>
-			    {<br>
-			    	console.log(this.model +", "+this.year);<br>
-			    }<br>
-			}<br>
-			<br>
-			var firstCar = new car("Toyota", "Truck X50", 1989, "Auto");<br>
-			var currentCar = new car("Ford", "Focus", 2008, "Auto");<br>
-
-		</code>
-		<br> 
-		<br>
-		When the car(<i>params</i>) function is called it is passed a number of parameters if any parameter is omitted it will be assigned a value of "undefined". So when the "firstCar" object is created that/"this" instance of that object is assigned unique values. So, when firstCar.make is called it returns "Toyota" and when currentCar is called it returns "Ford".  
-		<br>
-		</div>
-	</div> <!-- EndOf_ThisKeywordUnit -->
-	<div id="ObjectReferenceUnit">
-		<div class="well">
-		<h2 id="objectReferenceUnit">Object References</h2>
-		<p>In JavaScript objects point to references not to values.</p>
-		<p>If animal is an object, the following statement will not create a copy of animal:</p>
-		<br>
-		<code>
-			<var>function</var> creature(name, size,color,avgLife) {<br>
-			this.name = name;<br>
-			this.size = size;<br>
-			this.color = color;<br>
-			this.avgLife = avgLife;<br>
-		}<br>
-		<var>var</var> animal = new creature("cat","small","varies",15);<br>
-		<var>var</var> beast = animal;<br><br>
-
-		beast.avgLife = 15;<br>
-		console.log(animal.avgLife); //This will return 15<br>
-		</code>
-		<br>
-		<p>Instead of beast being a copy of animal, beast actually points to the same place in memory that the animal object does. So if a property of beast is changed it will also be changed for animal.</p>
-		<br>
-
-		</div>
-	</div> <!-- EndOf_ObjectReferenceUnit -->
-	<div id="ObjectPropertiesUnit">
-		<div class="well">
-		<h2 id="objectPropertiesUnit">Object Properties</h2>
-		<p>In a JavaScript object the properties are the values associated to that object.</p>
-		<br>
-		<p>Object Properties are unordered, they can typically be created on the fly, deleted at will, and modified. However, some object properties are read only. This unit covers:</p>
-		<ol>
-			<li><a href="#accessingPropertiesSection">Accessing Properties</a></li>
-			<li><a href="#loopingPropertiesSection">Looping Properties</a></li>
-			<li><a href="#crudProperties">CRUD On Properties</a></li>
-		</ol>
-		</div>
-		<div class="well">
-		<h3 id="accessingPropertiesSection">Acessing Properties</h3>
-		<p>In a JavaScript object the properties may be accessed in 1 of 2 ways. It may either be accessed using the dot notation as in <code>person.age</code> or <code>person.name</code>. Or it may be accessed using bracket notation as in <code>person["age"]</code> or <code>person["name"]</code>. The latter notation also lends itself to using variable with the correct expression as in <code><var>var</var> x = "age"; person[x];</code></p>
-		<br>
-		The code below will demonstrate the ways to access object properties on a new object
-		<br>
-		<code>
-			function silverware(type,material,weight)<br>
-			{<br>
-				this.type = type<br>
-				this.material = material<br>
-				this.weight = weight<br>
-			}<br>
-			<br>
-			var mattSilverware = new silverware("fork","steel", "2oz");<br>
-			var weightVar = "weight";<br>
-			document.getElementById("dotNotationExample").innerHTML = mattSilverware.type;<br>
-			document.getElementById("bracketNotationExample").innerHTML = mattSilverware["material"];<br>
-			document.getElementById("varBracketNotationExample").innerHTML = mattSilverware[weightVar];<br>
-		</code>
-		<br>
-		<p>The result of the final three lines of code are printed below:</p>
-		<p id="dotNotationExample"></p>
-		<p id="bracketNotationExample"></p>
-		<p id="varBracketNotationExample"></p>
-		</div>
-		<div class="well">
-		<h3 id="loopingPropertiesSection">Looping Properties</h3>
-		<p>In a JavaScript object the properties be looped through via a "For in... Loop". This takes all properties in the order they are declared and performs some operation against each property. This is useful in situations where each property to be presented needs to be designated to certain area based on one or more properties</p>
-		<br>
-		The code below will demonstrate the result of looping through two silverware objects
-		<br>
-		<code>
-			function silverware(type,material,weight)<br>
-			{<br>
-				this.type = type<br>
-				this.material = material<br>
-				this.weight = weight<br>
-			}<br>
-			<br>
-			var mattSilverware = new silverware("fork","steel", "2oz");<br>
-			var arielSilverware = new silverware("spoon","plastic", "1.5oz");<br>
-			var result = [];<br>
-			<br>
-			var silverwareArray = [mattSilverware, arielSilverware]<br>
-			<br>
-			for(i in silverwareArray)<br>
-			{<br>
-				var currentObject = silverwareArray[i]<br>
-				for(property in currentObject) // property === current object's properties and currentObject === the object itself.<br>
-				{
-					result.push(currentObject[property]);
-				}<br>
-			}<br>
-			document.getElementById("").innerHTML = result;<br>
-		</code>
-		<br>
-		<p>The results of the "For in... Loop" above:</p>
-		<p id="forLoopObjectExample"></p>
-
-		</div>
-		<div class="well">
-		<h3 id="crudProperties">CRUD For Properties</h3>
-		<p>JavaScript objects, for the most part, can have properties added, deleted, and updated at will. Properties may always be read.</p>
-		<br>
-		The code below will demonstrate adding, deleting, and updating object properties.
-		<br>
-		<code>
-			function silverware(type,material,weight)<br>
-			{<br>
-				this.type = type<br>
-				this.material = material<br>
-				this.weight = weight<br>
-			}<br>
-			<br>
-			var mattSilverware = new silverware("fork","steel", "2oz");<br>
-
-			mattSilverware.price =  25;<br>
-			delete mattSilverware.material;<br>
-			mattSilverware.weight = "1.6oz"<br>
-
-			document.getElementById("createPropertyExample").innerHTML = mattSilverware.price;<br>
-			document.getElementById("deletePropertyExample").innerHTML = mattSilverware.material;<br>
-			// will return  undefined<br>
-			document.getElementById("updatePropertyExample").innerHTML = mattSilverware.weight;<br>
-		</code>
-		<br>
-		<p>The code above is in use and returns: </p>
-		<p id="createPropertyExample"></p>
-		<p id="deletePropertyExample"></p>
-		<p id="updatePropertyExample"></p>
-		<p>All of the properties used in the above section are read and write accessible, however sometimes it is possible to have an object with properties that are read-only. See the code below to see how this works.</p>
-		<code>
-			Object.defineProperty(mattSilverware, "interfacePart", {<br>
-			    value: "hand",<br>
-			    writable: false<br>
-			});<br>
-			<br>
-			mattSilverware.interfacePart = "foot";<br>
-			document.getElementById("readOnlyExample").innerHTML=(mattSilverware.interfacePart);<br>
-		</code>
-		<br>
-		<p>The code above is in use and outputs the text in area below. Notice that even though interfacePart is set to equal foot, because the property is not writable it does not change and still out puts hand. </p>
-		<p id="readOnlyExample"></p>
-		</div>
-	</div> <!-- EndOf_ObjectPropertiesUnit -->
-	<div id="ObjectMethodsUnit">
-		<div class="well">
-		<h2 id="objectMethodsUnit">Object Methods</h2>
-		<p>In JavaScript objects the methods are the functions associated with that object.</p>
-		<br>
-		<p>Like object properties, object methods are unordered, they can typically be created on the fly, deleted at will, and modified. This unit covers: </p>
-		<ol>
-			<li><a href="#accessingMethodsSection">Accessing Methods</a></li>
-			<li><a href="#callingMethodsSection">Looping Properties</a></li>
-		</ol>
-		</div>
-		<div class="well">
-		<h3 id="accessingMethodsSection">Acessing Methods</h3>
-		<p>In a JavaScript object the properties may be accessed using dot notation similiar to accessing a basic property.</p>
-		<br>
-		The code below will demonstrate the ways to access object methods on a new object
-		<br>
-		<code>
-		var building = {<br>
-			material:"brick",<br>
-			height: 15,<br>
-			length: 40,<br>
-			width: 25,<br>
-			unitCost: 4.5,<br>
-			cost: function()<br>
-			{<br>
-				return this.unitCost * this.height * this.length * this.width;<br>
-			}<br>
-		};<br>
-		<br>
-		document.getElementById('accessMethodExample').innerHTML = "building.cost";<br>
-		</code>
-		<br>
-		<p>The result of the final three lines of code are printed below:</p>
-		<p id="accessMethodExample"></p>
-		</div>
-		<div class="well">
-		<h3 id="defualtMethodsSection">Default Methods</h3>
-		<p>In JavaScript there is a large number of built in methods that can be applied to properties. The methods are often specific to a certain data type. An example of a built in method is the <code>toUpperCase()</code> method. That method takes a string data type and converts it to an upper case version of itself. Another built in method is the <code>toFixed(x)</code> method. The <code>toFixed(x)</code> method takes a floating point number and displays that number rounded to the number passed into the method arguments section.</p>
-		<br>
-		The code below will demonstrate the use of JavaScript's built-in method: 
-		<br>
-		<code>
-		var building = {<br>
-			material:"brick",<br>
-			height: 15,<br>
-			length: 40,<br>
-			width: 25,<br>
-			unitCost: 4.5,<br>
-			cost: function()<br>
-			{<br>
-				return this.unitCost * this.height * this.length * this.width;<br>
-			}<br>
-		};<br>
-		document.getElementById('toUpperMethodExample').innerHTML = building.material.toUpperCase();<br>
-		document.getElementById('toFixedMethodExample').innerHTML = building.unitCost.toFixed(5);<br>
-		</code>
-		<br>
-		<p>The result of the previous lines of code are printed below:</p>
-		<p id="toUpperMethodExample"></p>
-		<p id="toFixedMethodExample"></p>
-		</div>
-	</div> <!-- EndOf_ObjectMethodsUnit -->
-	<div id="ObjectPrototypesUnit">
-		<div class="well">
-		<h2 id="objectPrototypesUnit">Object Prototypes</h2>
-		<p>As in most object oriented programming (OOP) languages the concept of inheritance is key. OOP languages do this via a class/object that inherits from something that is of the same sort. For instance if there was a class called Clothing that contained properties like: color, material, weight. We could use the properties of that class to make even more specific classes that have not only the properties listed in the original class but also unique properties for only objects of that unique type. For instance, consider a shoe class and a shirt class. Both of those items are considered clothing and both have properties like color, material, and weight, but they also have unique properites. Shoes might have a unique property called laceColor and shirts might have a unique property called frontPocket. Using inheritance developers may avoid rewriting the same code and use one source of truth for changes to the software in the future. In JavaScript inheritance is accomplished through Prototypes.</p>
-		<br>
-		<p>This unit covers: </p>
-		<ol>
-			<li><a href="#accessingMethodsSection">Creating Prototypes</a></li>
-		</ol>
-		</div>
-		<div class="well">
-		<h3 id="creatingPrototypesSection">Creating Prototypes</h3>
-		<p>In a JavaScript creating a prototype is very simple, but before a prototype can be created the class it is inheriting from must exist.</p>
-		<br>
-		The code below will demonstrate the creation of an object and a prototype made from that object.
-		<br>
-		<br>
-		<code>
-			function LeatherClothing(material)<br>
-			{<br>
-				this.material = "Leather"<br>
-				this.source = function()<br>
-					{<br>
-						console.log("A tanner made me!");<br>
-					}<br>
-			}<br>
-			<br>
-			var Shoe = function(shoeSize, laceColor)<br>
-			{<br>
-				this.shoeSize = shoeSize<br>
-				this.laceColor = laceColor<br>
-			}<br>
-			Shoe.prototype = new LeatherClothing();<br>
-			<br>
-			var Shirt = function(shirtSize, frontPocket)<br>
-			{<br>
-				this.shirtSize = shirtSize<br>
-				this.frontPocket = frontPocket<br>
-			}<br>
-			Shirt.prototype = new LeatherClothing();<br>
-			<br>
-			var myShirt = new Shirt("medium", true);<br>
-			document.getElementById('shirtPrototypeExample').innerHTML= (myShirt.material +", "+ myShirt.frontPocket)<br>
-			myShirt.source(); // Using the dev tools to validate this section<br>
-			<br>
-			var myShoes = new Shoe(11, "Brown")<br>
-			document.getElementById('shoesPrototypeExample').innerHTML= (myShoes.material +", "+ myShoes.laceColor)<br>
-			myShoes.source();<br>
-		</code>
-		<p>The code above is in use and returns:</p>
-		<p id="shirtPrototypeExample"></p>
-		<p id="shoesPrototypeExample"></p>
-		<br>
-		<p>The code above creates an object called LeatherColthing all items that are made of leather do not need to be explicitly declared as the material of all leather colthing will be leather according to the line <code>this.material = "Leather"</code>.All other properties are handled by more specific items namely, shirts and shoes. <i>Note: The call to </i> <code>source()</code><i> for both shoes and shirt appears in the console.</i></p>
-		</div>
-	</div> <!-- EndOf_ObjectPrototypesUnit -->
+		
 </div>
 
 <script src="./Scripts/ObjectLiteralCode.js"></script>
